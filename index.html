@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Signup</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6f0ff;
+}
+
+.container {
+  width: 800px;
+  height: 450px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Forms */
+.form-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  transition: 0.6s;
+  padding: 40px;
+}
+
+.login-container {
+  left: 0;
+}
+
+.signup-container {
+  left: 50%;
+  opacity: 0;
+}
+
+/* Active state */
+.container.active .login-container {
+  left: -50%;
+  opacity: 0;
+}
+
+.container.active .signup-container {
+  left: 0;
+  opacity: 1;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+.container.active .overlay {
+  transform: translateX(-100%);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container">
+
+  <!-- Login -->
+  <div class="form-container login-container">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+    <p style="margin-top:10px;">
+      Don't have an account?
+      <a href="#" id="showSignup">Signup</a>
+    </p>
+  </div>
+
+  <!-- Signup -->
+  <div class="form-container signup-container">
+    <h2>Signup</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Create password">
+    <input type="password" placeholder="Confirm password">
+    <button>Signup</button>
+    <p style="margin-top:10px;">
+      Already have an account?
+      <a href="#" id="showLogin">Login</a>
+    </p>
+
+<script>
+const container = document.getElementById("container");
+const showSignup = document.getElementById("showSignup");
+const showLogin = document.getElementById("showLogin");
+showSignup.onclick = () => container.classList.add("active");
+showLogin.onclick = () => container.classList.remove("active");
+</script>
+
+</body>
+</html>
